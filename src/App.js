@@ -8,7 +8,7 @@ export default function App() {
   <AppBar position="relative" sx={{background: blue[900], borderBottomLeftRadius:4, borderBottomRightRadius:4}}>
     <Toolbar>
       <Link to="/">Adrien Lagesse</Link>
-      <Link to="/blog">Blogs</Link>
+      <Link to="/blog">Blog</Link>
       <Link to="/apps">Apps</Link>
       <Link to="/about">About</Link>
 
