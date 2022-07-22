@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
     BrowserRouter,
@@ -15,15 +16,16 @@ const root = ReactDOM.createRoot(
     document.getElementById("root")
 );
 root.render(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<App/>}>
-                <Route path="blog" element={<Blog/>}/>
-                <Route path="apps" element={<Apps/>}/>
-                <Route path="about" element={<About/>}/>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route index path="/" element={<App/>}/>
+                <Route path="/apps" element={<Blog/>}/>
+                <Route path="/apps" element={<Apps/>}/>
+                <Route path="/about" element={<About/>}/>
                 <Route path="*" element={<NotFound/>}/>
-            </Route>
-        </Routes>
-        <App />
-    </BrowserRouter>
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>
+    
 );

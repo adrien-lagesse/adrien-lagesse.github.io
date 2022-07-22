@@ -1,4 +1,6 @@
 const path = require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     entry:"./src/index.js",
@@ -7,6 +9,15 @@ module.exports = {
         filename: 'bundle.js',
       },
     mode: "development",
+    devServer: {
+      static: {
+        directory: path.join(__dirname, './')
+      },
+      hot: 'only',
+      liveReload: false,
+      compress: true,
+      port: 9000,
+   },
     module: {
         rules: [
             {
@@ -28,7 +39,12 @@ module.exports = {
                     presets: ['@babel/preset-env']
                 }
                 }
+            },
+            {
+              test: /\.js$/,
+              enforce: "pre",
+              use: ["source-map-loader"],
             }
-        ]
+        ],
       }
 };
