@@ -1,30 +1,32 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography } from '@mui/material';
-import {Link} from 'react-router-dom';
-import { blue } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Card, CardContent, CardMedia } from '@mui/material';
+
+import NavBar from './NavBar';
+import profileImage from './assets/RNN.jpeg'
+
+const theme = createTheme({
+  palette:{
+    primary:{
+      main: "#001F54",
+      light: "#669EFF"
+    },
+    secondary:{
+      main: "#f1faee",
+    }
+  }
+})
 
 export default function App() {
   return (
-  <AppBar position="relative" sx={{background: blue[900], borderBottomLeftRadius:4, borderBottomRightRadius:4}}>
-    <Toolbar>
-      <Link to="/">Adrien Lagesse</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/apps">Apps</Link>
-      <Link to="/about">About</Link>
-
-      <Typography color="inherit" component="div" sx={{margin:1, marginLeft:"auto"}}>
-        <a href="#">Github</a>
-      </Typography>
-
-      <Typography color="inherit" component="div" sx={{margin:1}}>
-        <a href="#">Linkedin</a>
-      </Typography>
-
-      <Typography color="inherit" component="div" sx={{margin:1}}>
-        <a href="#">Twitter</a>
-      </Typography>
-
-    </Toolbar>
-  </AppBar>
+  <ThemeProvider theme={theme}>
+    <NavBar/>
+    <Card variant="outlined" sx={{display:'flex', flexDirection:'col',  m:2}}>
+      <CardMedia component='img' src={profileImage} alt='Adrien Lagesse profile image' sx={{width:"20%"}}/>
+      <CardContent>
+        My name is Adrien Lagesse, I am a Mauritian passionated about Mathematics, Geometry and Machine Learning.
+      </CardContent>
+    </Card>
+  </ThemeProvider>
   );
 }
