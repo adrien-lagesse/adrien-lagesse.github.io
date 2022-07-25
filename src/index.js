@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-    BrowserRouter,
+    HashRouter,
     Routes,
     Route,
 } from "react-router-dom";
+
+import {ThemeProvider} from '@mui/material/styles';
+
+import theme from './theme.js';
 
 import App from './App.js';
 import Blog from './routes/blog.js';
@@ -17,15 +21,17 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route index path="/" element={<App/>}/>
-                <Route path="/blog" element={<Blog/>}/>
-                <Route path="/apps" element={<Apps/>}/>
-                <Route path="/about" element={<About/>}/>
-                <Route path="*" element={<NotFound/>}/>
-            </Routes>
-        </BrowserRouter>
+        <ThemeProvider theme={theme}>
+            <HashRouter>
+                <Routes>
+                    <Route index path="/" element={<App/>}/>
+                    <Route path="/blog" element={<Blog/>}/>
+                    <Route path="/apps" element={<Apps/>}/>
+                    <Route path="/about" element={<About/>}/>
+                    <Route path="*" element={<NotFound/>}/>
+                </Routes>
+            </HashRouter>
+        </ThemeProvider>
     </React.StrictMode>
     
 );
